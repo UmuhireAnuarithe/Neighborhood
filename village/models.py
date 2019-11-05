@@ -24,6 +24,16 @@ class Village(models.Model):
    location = models.CharField(max_length =70 )
    population = models.IntegerField(default=0)
    village_image= models.ImageField(upload_to = 'pictures/',null=True)
+   def __str__(self):
+      return self.location
+   def save_village(self):
+      self.save()
+
+   def update_village(self):
+      self.update()
+
+   def delete(self):
+      self.delete()
 
    @classmethod
    def get_village_by_id(cls, id):

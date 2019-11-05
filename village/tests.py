@@ -32,20 +32,20 @@ class ProfileTestClass(TestCase):
         tree = Profile.objects.filter(id =nature.id).delete()
         trees =Profile.objects.all()
         
-# class VillageTestClass(TestCase):
-#        # Set up method
-#     def setUp(self):
-#         self.gafuka= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
+class VillageTestClass(TestCase):
+       # Set up method
+    def setUp(self):
+        self.gafuka= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
         
-#         # Testing  instance
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.gafuka,Village))
+        # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.gafuka,Village))
 
-#     def test_save_village(self):
-#         self.gafuka= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
-#         self.quotes.save_project()
-#         projects = Village.objects.all()
-#         self.assertTrue(len(Village)>0)
+    def test_save_village(self):
+        self.gafuka= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
+        self.gafuka.save_village()
+        hoods = Village.objects.all()
+        self.assertTrue(len(hoods)>0)
     
 
 #     def test_update_project(self):
