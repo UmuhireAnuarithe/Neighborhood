@@ -12,11 +12,12 @@
       <a class="navbar-brand" href="{% url 'index' %}">Hood</a>
     </div>
   </div>
+  <div class="col-sm-4 col-md-3 navbar-right">
   <div class="col-sm-6 col-md-6">
         {% if user.is_authenticated %}
         <ul>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">{{user.username}}
                       <span class="caret"></span>
                   </a>
             <ul class="dropdown-menu" role="menu">
@@ -42,6 +43,7 @@
 
         {% endif %}
       </div>
+    </div>
 </nav>
 </body>
 </html>
