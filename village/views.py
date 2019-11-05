@@ -16,12 +16,16 @@ def new_events(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-        return redirect('index')
+        return redirect('events')
 
     else:
         form = EventsForm()
     return render(request, 'event.html', {"form": form})
 
+@login_required(login_url='/accounts/login/')       
+def events(request):
+    events = Events.objects.all()
+    return render(request, 'village.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
 def hoods(request):
