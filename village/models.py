@@ -19,6 +19,13 @@ class Profile(models.Model):
    def delete(self):
       self.delete()
 
+class Village(models.Model):
+   village = models.CharField(max_length =30 )
+   location = models.CharField(max_length =70 )
+   population = models.IntegerField(default=0)
+   event_image= models.ImageField(upload_to = 'pictures/',null=True)
+
+
 class Events(models.Model):
    name = models.CharField(max_length =30 )
    description = models.TextField(max_length= 300)
