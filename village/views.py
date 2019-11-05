@@ -4,7 +4,8 @@ from  .models import Profile,Events,User
 from django.contrib.auth.decorators import login_required
 def hood(request):
     events = Events.objects.all()
-    return render(request, 'home.html',{'events':events})
+    hoods = Village.objects.all()
+    return render(request, 'home.html',{'events':events,'hoods':hoods})
 
 @login_required(login_url='/accounts/login/')       
 def events(request):
