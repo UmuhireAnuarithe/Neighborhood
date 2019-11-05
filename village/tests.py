@@ -48,18 +48,18 @@ class VillageTestClass(TestCase):
         self.assertTrue(len(hoods)>0)
     
 
-#     def test_update_project(self):
-#         self.gitega= Village(village_image= 'passion.jpeg',location ='kigali',population=4) 
-#         self.gitega.save_village()
-#         sector =Village.objects.filter(location ='kigali').first()
-#         update= Village.objects.filter(id=sector.id).update(name ='Goals')
-#         updated = Village.objects.filter(location ='kiyovu').first()
-#         self.assertNotEqual(gitega.location , updated.location)
+    def test_update_project(self):
+        self.gitega= Village(village_image= 'passion.jpeg',location ='kigali',population=4) 
+        self.gitega.save_village()
+        sector =Village.objects.filter(location ='kigali').first()
+        update= Village.objects.filter(id=sector.id).update(location ='kiyovu')
+        updated = Village.objects.filter(location ='kiyovu').first()
+        self.assertNotEqual(sector.location , updated.location)
 
-    # def test_delete_project(self):
-    #     self.gafuka= Village(village_image= 'passion.jpeg',location ='Burere',population=40
-    #     self.quotes.save_project()
-    #     QUOTES = Village.objects.filter(name ='Quotes').first()
-    #     quotes = Village.objects.filter(id =QUOTES.id).delete()
-    #     quotes = Village.objects.all()
+    def test_delete_project(self):
+        self.gitega= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
+        self.gitega.save_village()
+        cell = Village.objects.filter(location ='Burere').first()
+        cells = Village.objects.filter(id =cell.id).delete()
+        cells = Village.objects.all()
         
