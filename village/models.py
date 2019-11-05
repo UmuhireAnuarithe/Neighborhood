@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-   username = models.CharField(max_length =30)
+   username = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
    Profile_picture= models.ImageField(upload_to = 'pictures/')
    email = models.EmailField()
    user_bio = models.CharField(max_length =30)
@@ -23,7 +23,7 @@ class Village(models.Model):
    village = models.CharField(max_length =30 )
    location = models.CharField(max_length =70 )
    population = models.IntegerField(default=0)
-   event_image= models.ImageField(upload_to = 'pictures/',null=True)
+   village_image= models.ImageField(upload_to = 'pictures/',null=True)
 
 
 class Events(models.Model):
