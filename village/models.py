@@ -25,6 +25,11 @@ class Village(models.Model):
    population = models.IntegerField(default=0)
    village_image= models.ImageField(upload_to = 'pictures/',null=True)
 
+   @classmethod
+   def get_village_by_id(cls, id):
+      village = Village.objects.filter(id=Village.id)
+      return village
+
 
 class Events(models.Model):
    name = models.CharField(max_length =30 )

@@ -23,8 +23,9 @@ def new_events(request):
     return render(request, 'event.html', {"form": form})
 
 @login_required(login_url='/accounts/login/')       
-def events(request):
-    events = Events.objects.all()
+def events(request,id):
+    village = Village.objects.filter(id=Village.id)
+    events = Events.objects.filter(village=village.id)
     return render(request, 'village.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
