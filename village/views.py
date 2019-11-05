@@ -21,3 +21,19 @@ def events(request):
     else:
         form = EventsForm()
     return render(request, 'event.html', {"form": form})
+
+
+@login_required(login_url='/accounts/login/')       
+def hoods(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = HoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            hood = form.save(commit=False)
+            hood.user = current_user
+            hood.save()
+        return redirect('index')
+
+    else:
+        form = HoodForm()
+    return render(request, 'event.html', {"form": form})
