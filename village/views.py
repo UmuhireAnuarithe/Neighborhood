@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .forms import ProfileForm,EventsForm
+from  .models import Profile,Events,User
 from django.contrib.auth.decorators import login_required
 def hood(request):
-    return render(request, 'village.html')
+    events = Events.objects.all()
+    return render(request, 'home.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
 def events(request):

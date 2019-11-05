@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+        <div class="row">
+                {% for event in events %}
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+
+                        <h2 class="text-center" style="font-family: 'Shrikhand', cursive;color:blue;"> {{ event.name }} </h2>
+                        
+
+                        <img src="{{event.event_image.url}}" class="img-responsive" alt="Image" height="300" width="400">
+                        <br>
+                        <p class="text-center" style="font-family: 'Lobster', cursive;font-size: 30px;">{{ event.description }}</p>
+                </div>
+
+                {% endfor %}
+        </div>
+</div>
+{% endblock %}
