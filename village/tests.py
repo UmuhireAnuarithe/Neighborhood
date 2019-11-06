@@ -111,5 +111,19 @@ class EventsTestClass(TestCase):
         events = Events.objects.all()
         self.assertTrue(len(events)>0)
     
+def test_update_events(self):
+        self.meeting = Events(event_image= 'passion.jpeg',name ='Burere',description='youth meeting')
+        self.meeting.save_events()
+        sector =Events.objects.filter(name ='Burere').first()
+        update= Events.objects.filter(id=sector.id).update(name ='kigali')
+        updated = Events.objects.filter(name ='kigali').first()
+        self.assertNotEqual(sector.name , updated.name)
 
+    def test_delete_events(self):
+        self.meeting = Events(event_image= 'passion.jpeg',name ='Burere',description='youth meeting')
+        self.meeting.save_events()
+        sector =Events.objects.filter(name ='Burere').first()
+        cells = Events.objects.filter(id =sector.id).delete()
+        cells = Events.objects.all()
+        
     
