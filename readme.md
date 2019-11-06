@@ -1,6 +1,6 @@
 # Neighborhood
 
-##  written by Anuarithemuhire 
+##  written by Anuarithe Umuhire 
 ## Done on 4th November
 
 ## Descrption of the project
