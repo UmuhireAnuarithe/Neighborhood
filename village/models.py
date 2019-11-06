@@ -48,7 +48,18 @@ class Events(models.Model):
    event_image= models.ImageField(upload_to = 'pictures/',null=True)
 
 class Business(models.Model):
-    business_image= models.ImageField(upload_to = 'pictures/',null=True)
-    name = models.CharField(max_length =300)
-    description = models.TextField(max_length= 300)
-    owner = models.CharField(max_length =30) 
+   business_image= models.ImageField(upload_to = 'pictures/',null=True)
+   name = models.CharField(max_length =300)
+   description = models.TextField(max_length= 300)
+   owner = models.CharField(max_length =30) 
+
+   def __str__(self):
+      return self.name
+   def save_business(self):
+      self.save()
+
+   def update_business(self):
+      self.update()
+
+   def delete(self):
+      self.delete()

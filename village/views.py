@@ -23,9 +23,31 @@ def new_events(request):
     return render(request, 'event.html', {"form": form})
 
 @login_required(login_url='/accounts/login/')       
-def events(request,id):
-    village = Village.objects.filter(id=Village.id)
-    events = Events.objects.filter(village=village.id)
+def new_business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+        return redirect('events')
+
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')       
+def business(request):
+    events = Events.objects.all()
+    return render(request, 'buz.html',{'events':events})
+
+
+@login_required(login_url='/accounts/login/')       
+def events(request):
+    # village = Village.objects.filter(id=Village.id)
+    # events = Events.objects.filter(village=village.id)
+    events = Events.objects.all()
     return render(request, 'village.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
