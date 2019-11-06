@@ -47,6 +47,16 @@ class Events(models.Model):
    username = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
    event_image= models.ImageField(upload_to = 'pictures/',null=True)
 
+   def __str__(self):
+      return self.name
+   def save_events(self):
+      self.save()
+
+   def update_events(self):
+      self.update()
+
+   def delete(self):
+      self.delete()
 class Business(models.Model):
    business_image= models.ImageField(upload_to = 'pictures/',null=True)
    name = models.CharField(max_length =300)

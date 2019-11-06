@@ -96,3 +96,20 @@ class BusinessTestClass(TestCase):
         cells = Business.objects.filter(id =cell.id).delete()
         cells = Business.objects.all()
         
+class EventsTestClass(TestCase):
+       # Set up method
+    def setUp(self):
+        self.meeting = Events(event_image= 'passion.jpeg',name ='Burere',description='youth meeting')
+        
+        # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.meeting,Events))
+
+    def test_save_events(self):
+        self.meeting = Events(event_image= 'passion.jpeg',name ='Burere',description='youth meeting')
+        self.meeting.save_events()
+        events = Events.objects.all()
+        self.assertTrue(len(events)>0)
+    
+
+    
