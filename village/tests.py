@@ -81,18 +81,18 @@ class BusinessTestClass(TestCase):
         self.assertTrue(len(hoods)>0)
     
 
-    # def test_update_project(self):
-    #     self.gitega= Village(village_image= 'passion.jpeg',location ='kigali',population=4) 
-    #     self.gitega.save_village()
-    #     sector =Village.objects.filter(location ='kigali').first()
-    #     update= Village.objects.filter(id=sector.id).update(location ='kiyovu')
-    #     updated = Village.objects.filter(location ='kiyovu').first()
-    #     self.assertNotEqual(sector.location , updated.location)
+    def test_update_Village(self):
+        self.guhinga = Business(business_image= 'passion.jpeg',name ='Burere',description='beans',owner='umuhire')
+        self.guhinga.save_business()
+        sector =Business.objects.filter(owner='umuhire').first()
+        update= Business.objects.filter(id=sector.id).update(owner='anuarithe')
+        updated = Business.objects.filter(owner='anuarithe').first()
+        self.assertNotEqual(sector.owner , updated.owner)
 
-    # def test_delete_project(self):
-    #     self.gitega= Village(village_image= 'passion.jpeg',location ='Burere',population=40)
-    #     self.gitega.save_village()
-    #     cell = Village.objects.filter(location ='Burere').first()
-    #     cells = Village.objects.filter(id =cell.id).delete()
-    #     cells = Village.objects.all()
+    def test_delete_project(self):
+        self.guhinga = Business(business_image= 'passion.jpeg',name ='Burere',description='beans',owner='umuhire')
+        self.guhinga.save_business()
+        cell = Business.objects.filter(owner='umuhire').first()
+        cells = Business.objects.filter(id =cell.id).delete()
+        cells = Business.objects.all()
         
