@@ -59,7 +59,7 @@ class Events(models.Model):
       self.delete()
 class Business(models.Model):
    business_image= models.ImageField(upload_to = 'pictures/',null=True)
-   name = models.CharField(max_length =300)
+   name = models.CharField(max_length =60)
    description = models.TextField(max_length= 300)
    owner = models.CharField(max_length =30) 
 
@@ -73,3 +73,8 @@ class Business(models.Model):
 
    def delete(self):
       self.delete()
+
+   @classmethod
+   def search_business(cls,search_term):
+      business = cls.objects.filter(name__icontains=search_term)
+      return business

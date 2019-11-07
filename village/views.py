@@ -113,3 +113,18 @@ def edit_profile(request):
             form=ProfileForm()     
             
     return render(request,'edit_profile.html',{"form":form})
+
+
+@login_required(login_url='/accounts/login/')
+def search_business(request):
+
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        business =Business.search_business(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"business":business})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})

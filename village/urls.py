@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^business$', views.business, name='business'),
     url(r'^events$', views.events, name='events'),
     url(r'^new/hood$', views.hoods, name='hoods'),
+    url(r'^search/', views.search_business, name='search_business'),
     url(r'^profile/(\d+)',views.profile,name = 'profile'),
     url(r'^new/edit_profile/$', views.edit_profile, name = 'edit_profile'),
 ]

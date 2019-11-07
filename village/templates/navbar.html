@@ -11,57 +11,77 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'index' %}">Hood</a>
+        <div class="col-sm-4 col-md-4 navbar-left">
+          <a class="navbar-brand" href="{% url 'index' %}">Hood</a>
+        </div>
       </div>
-    </div>
-    <div class="col-sm-4 col-md-3 navbar-right">
-      <div class="col-sm-4 col-md-4">
-        <!-- {% if user.is_authenticated %} -->
-        <ul>
-          <li class="nav-item">
-            <a href="{% url 'profile' user.id%}" style="text-decoration: none; color: #D0D3D4;font-size: 15px; margin: 10px;">{{user.username}}
-              {% if user.profile.Profile_picture %}
-              <img src="{{user.profile.Profile_picture.url}}" alt="profile" height="40px" width="40px" style="border-radius: 50%">
-            </a>
-            {% else %}
-            <img src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png" alt="profile"
-              height="40px" width="40px" style="border-radius: 50%">
-            {% endif %}
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">{{user.username}}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="{%url 'index'%}">Home</a>
-              </li>
-              <li>
-                <a href="/accounts/password/change">Change Password</a>
-              </li>
-              <li>
-                <a href="{%url 'new-events'%}">Post Event</a>
-              </li>
-              <li>
-                <a href="{%url 'new-business'%}">Create business</a>
-              </li>
-              <li>
-                <a href="{%url 'hoods'%}">Add hood</a>
-              </li>
-              <li>
-                <a href="/logout">Logout</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        {% else %}
-        <li>
-          <a class='btn btn-default' href="/accounts/login">Login</a>
-        </li>
+      <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-center">
 
-        {% endif %}
+        <form class="navbar-form" role="search" action="{% url 'search_business' %}">
+
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search business" name="business">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <!-- search form end -->
+      <div class="col-sm-4 col-md-4">
+        <div class="col-sm-4 col-md-4 navbar-right">
+          <!-- {% if user.is_authenticated %} -->
+          <ul>
+            <li class="nav-item">
+              <a href="{% url 'profile' user.id%}" style="text-decoration: none; color: #D0D3D4;font-size: 15px; margin: 10px;">{{user.username}}
+                {% if user.profile.Profile_picture %}
+                <img src="{{user.profile.Profile_picture.url}}" alt="profile" height="40px" width="40px" style="border-radius: 50%">
+              </a>
+              {% else %}
+              <img src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png" alt="profile"
+                height="40px" width="40px" style="border-radius: 50%">
+              {% endif %}
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">{{user.username}}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="{%url 'index'%}">Home</a>
+                </li>
+                <li>
+                  <a href="/accounts/password/change">Change Password</a>
+                </li>
+                <li>
+                  <a href="{%url 'new-events'%}">Post Event</a>
+                </li>
+                <li>
+                  <a href="{%url 'new-business'%}">Create business</a>
+                </li>
+                <li>
+                  <a href="{%url 'hoods'%}">Add hood</a>
+                </li>
+                <li>
+                  <a href="/logout">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% else %}
+          <li>
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+          </li>
+
+          {% endif %}
+        </div>
       </div>
     </div>
+
+
+
   </nav>
 </body>
 

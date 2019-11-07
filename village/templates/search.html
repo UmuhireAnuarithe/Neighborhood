@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if business %}
+    <h2>Found {{ business|length }} of searched term {{message}}</h2>
+    {% else %}
+    <h2> Found 0 business for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+    {% if business %}
+    {% for business in business %}
+    <div class="col-sm-6 col-md-3">
+      <h1>{{project.name}}</h1>
+      <img src="{{business.business_image.url}}" class="img-responsive" alt="Image">
+      <br>
+      <p>{{business.description}}</p>
+      
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
