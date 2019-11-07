@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import ProfileForm,EventsForm ,HoodForm
-from  .models import Profile,Events,User,Village
+from  .models import Profile,Events,User,Village,Business
 from django.contrib.auth.decorators import login_required
 def hood(request):
     events = Events.objects.all()
@@ -28,10 +28,10 @@ def new_business(request):
     if request.method == 'POST':
         form = BusinessForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.user = current_user
-            post.save()
-        return redirect('events')
+            business = form.save(commit=False)
+            business.user = current_user
+            business.save()
+        return redirect('business')
 
     else:
         form = BusinessForm()
@@ -39,8 +39,8 @@ def new_business(request):
 
 @login_required(login_url='/accounts/login/')       
 def business(request):
-    events = Events.objects.all()
-    return render(request, 'buz.html',{'events':events})
+    business = Business.objects.all()
+    return render(request, 'buz.html',{'business':business})
 
 
 @login_required(login_url='/accounts/login/')       
@@ -48,7 +48,7 @@ def events(request):
     # village = Village.objects.filter(id=Village.id)
     # events = Events.objects.filter(village=village.id)
     events = Events.objects.all()
-    return render(request, 'village.html',{'events':events})
+    return render(request, 'villageevent.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
 def hoods(request):
