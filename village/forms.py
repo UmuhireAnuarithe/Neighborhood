@@ -19,4 +19,4 @@ class EventsForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        exclude = ['username']
+        exclude = []

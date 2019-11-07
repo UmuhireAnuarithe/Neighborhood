@@ -1,15 +1,18 @@
 from django.shortcuts import render,redirect
-from .forms import ProfileForm,EventsForm ,HoodForm
+from .forms import ProfileForm,EventsForm ,HoodForm ,BusinessForm
 from  .models import Profile,Events,User,Village,Business
 from django.contrib.auth.decorators import login_required
+
+
 def hood(request):
-    events = Events.objects.all()
+    # events = Events.objects.all()
     hoods = Village.objects.all()
     return render(request, 'home.html',{'hoods':hoods})
 
 @login_required(login_url='/accounts/login/')       
 def new_events(request):
     current_user = request.user
+    events = Events.objects.all()
     if request.method == 'POST':
         form = EventsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -20,7 +23,13 @@ def new_events(request):
 
     else:
         form = EventsForm()
-    return render(request, 'event.html', {"form": form})
+    return render(request, 'event.html', {"form": form,'events':events})
+
+@login_required(login_url='/accounts/login/')       
+def events(request):
+    events = Events.objects.all()
+    return render(request, 'villageevent.html',{'events':events})
+
 
 @login_required(login_url='/accounts/login/')       
 def new_business(request):
@@ -43,12 +52,6 @@ def business(request):
     return render(request, 'buz.html',{'business':business})
 
 
-@login_required(login_url='/accounts/login/')       
-def events(request):
-    # village = Village.objects.filter(id=Village.id)
-    # events = Events.objects.filter(village=village.id)
-    events = Events.objects.all()
-    return render(request, 'villageevent.html',{'events':events})
 
 @login_required(login_url='/accounts/login/')       
 def hoods(request):
