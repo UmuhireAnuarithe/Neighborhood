@@ -119,7 +119,7 @@ def test_update_events(self):
         updated = Events.objects.filter(name ='kigali').first()
         self.assertNotEqual(sector.name , updated.name)
 
-    def test_delete_events(self):
+def test_delete_events(self):
         self.meeting = Events(event_image= 'passion.jpeg',name ='Burere',description='youth meeting')
         self.meeting.save_events()
         sector =Events.objects.filter(name ='Burere').first()

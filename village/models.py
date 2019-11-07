@@ -32,8 +32,8 @@ class Village(models.Model):
    def update_village(self):
       self.update()
 
-   # def delete(self):
-   #    self.delete()
+   def delete(self):
+      self.delete()
 
    @classmethod
    def get_village_by_id(cls, id):
@@ -55,8 +55,8 @@ class Events(models.Model):
    def update_events(self):
       self.update()
 
-   # def delete(self):
-   #    self.delete()
+   def delete(self):
+      self.delete()
 class Business(models.Model):
    business_image= models.ImageField(upload_to = 'pictures/',null=True)
    name = models.CharField(max_length =60)
